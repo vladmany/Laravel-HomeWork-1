@@ -13,7 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'UserController@index');
-Route::get('/users', 'UserController@showUsers');
-Route::get('/users/{id}', 'UserController@showUserInfo');
-Route::get('/about', 'UserController@about');
+//Route::get('/', 'UserController@index');
+//Route::get('/users', 'UserController@showUsers');
+//Route::get('/users/{id}', 'UserController@showUserInfo');
+//Route::get('/about', 'UserController@about');
+//Route::get('/set-users', 'UsersController@set');
+
+Route::get('/', 'Library@index');
