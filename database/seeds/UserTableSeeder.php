@@ -13,20 +13,10 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        $role_user = Role::where('name', 'User')->first();
-        $user = new User();
-        $user->name = 'Vladislav';
-        $user->email = 'vdasdasd@gmail.com';
-        $user->password = 'dsagsdgfw3r32resf53432edafd';
-        $user->save();
-        $user->roles()->attach($role_user);
-
-        $role_admin = Role::where('name', 'Admin')->first();
-        $admin = new User();
-        $admin->name = 'Administrator';
-        $admin->email = 'admin@gmail.com';
-        $admin->password = '23423rsfwet3reqwasdadqee1q2eqdadsfDASDQ@reqerd';
-        $admin->save();
-        $admin->roles()->attach($role_admin);
+        foreach (Role::all() as $role) {
+            factory(User::class, 1)->create([
+                'role_id' => $role->id
+            ]);
+        }
     }
 }

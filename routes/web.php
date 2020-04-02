@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +20,9 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/about', 'UserController@about');
 //Route::get('/set-users', 'UsersController@set');
 
-Route::get('/', 'Library@index');
+Auth::routes();
+
+Route::get('/{selGenre?}', 'LibraryController@index');
+
+Route::get('/home', 'HomeController@index')->name('home');
+
