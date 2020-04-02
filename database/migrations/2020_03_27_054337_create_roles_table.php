@@ -15,22 +15,12 @@ class CreateRolesTable extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
-<<<<<<< HEAD
+
             $table->string('name')->unique();
-=======
+
             $table->string('name');
->>>>>>> origin/master
+
             $table->timestamps();
         });
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('roles');
     }
 }
