@@ -14,15 +14,40 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', 'UserController@index');
-//Route::get('/users', 'UserController@showUsers');
-//Route::get('/users/{id}', 'UserController@showUserInfo');
-//Route::get('/about', 'UserController@about');
-//Route::get('/set-users', 'UsersController@set');
-
 Auth::routes();
 
 Route::get('/{selGenre?}', 'LibraryController@index');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::name('adminpanel.')
+    ->namespace('AdminPanel')
+    ->prefix('adminpanel')
+    ->group(function () {
+        Route::prefix('users')
+            ->name('users.')
+            ->group(function () {
+                Route::resource('/', 'UserController');
+            });
 
+        Route::prefix('genres')
+            ->name('genres.')
+            ->group(function () {
+                Route::resource('/', 'GenreController');
+            });
+
+        Route::prefix('books')
+            ->name('books.')
+            ->group(function () {
+                Route::resource('/', 'BookController');
+            });
+    });
+
+Route::name('userpanel.')
+    ->namespace('UserPanel')
+    ->prefix('userpanel')
+    ->group(function () {
+        Route::prefix('books')
+            ->name('books.')
+            ->group(function () {
+                Route::resource('/', 'BookController');
+            });
+    });

@@ -4,6 +4,39 @@
     font-weight: bold;
 }
 
+.auth-form {
+    margin-top: 200px;
+    margin-bottom: 150px;
+}
+
+.nav-user-font {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.nav-user-font:hover {
+    color: rgba(0, 0, 0, 0.5);
+    text-decoration: underline;
+}
+
+.nav-admin-font {
+    color: rgba(243, 15, 15 , 0.5);
+    font-weight: bold;
+}
+
+.nav-admin-font:hover {
+    color: rgba(243, 15, 15 , 0.5);
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.menu-admin-font {
+    color: rgba(255, 34, 34 , 0.5);
+}
+
+.menu-admin-font:hover {
+    color: rgba(255, 34, 34 , 0.5);
+}
+
 .blog-header {
     line-height: 1;
     border-bottom: 1px solid #e5e5e5;

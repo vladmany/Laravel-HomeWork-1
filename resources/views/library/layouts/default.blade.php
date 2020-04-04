@@ -12,6 +12,8 @@
 
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
 
+    <script src="{{ mix('js/app.js') }}"></script>
+
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="/docs/4.4/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
     <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
