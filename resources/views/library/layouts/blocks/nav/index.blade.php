@@ -27,7 +27,7 @@
                             <a class="dropdown-item" href="{{ route('logout') }}">Мой аккаунт</a>
                             @if(Auth::user()->role_id == 2)
                                 <hr>
-                                <a class="dropdown-item menu-admin-font" href="">Управление пользователями</a>
+                                <a class="dropdown-item menu-admin-font" href="{{ route('adminpanel.users.index') }}">Управление пользователями</a>
                                 <a class="dropdown-item menu-admin-font" href="">Управление жанрами</a>
                                 <a class="dropdown-item menu-admin-font" href="">Управление книгами</a>
 

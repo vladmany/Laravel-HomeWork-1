@@ -19,35 +19,38 @@ Auth::routes();
 Route::get('/{selGenre?}', 'LibraryController@index');
 
 Route::name('adminpanel.')
-    ->namespace('AdminPanel')
+    ->namespace('adminPanel')
     ->prefix('adminpanel')
+    ->middleware(['auth', 'role:2'])
     ->group(function () {
-        Route::prefix('users')
-            ->name('users.')
+        Route::namespace('Users')
             ->group(function () {
-                Route::resource('/', 'UserController');
+                Route::resource('users', 'UserController');
             });
 
-        Route::prefix('genres')
-            ->name('genres.')
+        Route::post('users/del-with-books', 'Users\UserController@destroyWithBooks')->name('users.delWithBooks');
+        Route::post('users/del-only-user', 'Users\UserController@destroyOnlyUser')->name('users.delOnlyUser');
+
+        Route::namespace('Genres')
             ->group(function () {
-                Route::resource('/', 'GenreController');
+                Route::resource('genres', 'GenreController');
             });
 
-        Route::prefix('books')
-            ->name('books.')
+        Route::namespace('Books')
             ->group(function () {
-                Route::resource('/', 'BookController');
+                Route::resource('books', 'BookController');
             });
     });
 
 Route::name('userpanel.')
     ->namespace('UserPanel')
-    ->prefix('userpanel')
     ->group(function () {
-        Route::prefix('books')
-            ->name('books.')
+        Route::namespace('Books')
             ->group(function () {
-                Route::resource('/', 'BookController');
+                Route::resource('books', 'BookController');
             });
     });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

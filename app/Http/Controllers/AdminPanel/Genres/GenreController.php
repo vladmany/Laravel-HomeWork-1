@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\AdminPanel;
+namespace App\Http\Controllers\AdminPanel\Genres;
 
 use App\Http\Controllers\Controller;
+use App\Models\Genre;
 use Illuminate\Http\Request;
 
 class GenreController extends Controller
@@ -14,7 +15,7 @@ class GenreController extends Controller
      */
     public function index()
     {
-        //
+        $genres = Genre::select();
     }
 
     /**
@@ -41,10 +42,10 @@ class GenreController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Genre  $genre
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Genre $genre)
     {
         //
     }
@@ -52,10 +53,10 @@ class GenreController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Genre  $genre
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Genre $genre)
     {
         //
     }
@@ -64,10 +65,10 @@ class GenreController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Genre  $genre
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Genre $genre)
     {
         //
     }
@@ -75,10 +76,10 @@ class GenreController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Genre  $genre
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Genre $genre)
     {
         //
     }

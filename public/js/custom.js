@@ -1,3 +1,1 @@
-// $('.user-drop-info').click(function () {
-//     console.log($('.user-drop-info').parent())
-// });
+$('input',$('.invalid-feedback').parent()).addClass('is-invalid');

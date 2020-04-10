@@ -4,6 +4,7 @@
     font-weight: bold;
 }
 
+
 .auth-form {
     margin-top: 200px;
     margin-bottom: 150px;
@@ -27,6 +28,22 @@
     color: rgba(243, 15, 15 , 0.5);
     font-weight: bold;
     text-decoration: underline;
+}
+
+.users-table-operations-th {
+    text-align: center;
+}
+
+.users-table-operations-td {
+    display: flex;
+}
+
+.users-table-operations-td a:first-child {
+    margin-right: 15px;
+}
+
+.btn-add-table {
+    margin-bottom: 5px;
 }
 
 .menu-admin-font {
