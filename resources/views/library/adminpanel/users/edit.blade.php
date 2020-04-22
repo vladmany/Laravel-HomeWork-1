@@ -1,5 +1,7 @@
 @extends('library.layouts.default')
 
+@section('title', 'Изменение учётной записи пользователя')
+
 @section('content')
     <div class="container">
         <div class="row justify-content-center auth-form">

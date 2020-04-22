@@ -12,6 +12,7 @@ class GenreTableSeeder extends Seeder
      */
     public function run()
     {
+        (new Genre(['name' => 'Без жанра']))->save();
         (new Genre(['name' => 'Боевик']))->save();
         (new Genre(['name' => 'Фэнтези']))->save();
         (new Genre(['name' => 'Приключения']))->save();

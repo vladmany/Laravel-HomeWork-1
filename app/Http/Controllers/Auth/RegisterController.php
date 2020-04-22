@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\User;
+use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -49,25 +49,37 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:30', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ],[
+            'required' => 'Поле обязательное для заполнения',
+            'string' => 'Поле не является строкой',
+            'max' => 'Максимально допустимая длинна поля :max символов',
+            'min' => 'Минимально допустимая длинна поля :min символов',
+            'email.unique' => 'Пользователь с таким Email уже зарегистрирован',
+            'name.unique' => 'Пользователь с таким именем уже существует',
+            'password.confirmed' => 'Пароли не совпадают'
         ]);
+
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return User
      */
     protected function create(array $data)
     {
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role_id' => 1
         ]);
     }
 }

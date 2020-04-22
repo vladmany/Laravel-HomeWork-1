@@ -9,17 +9,19 @@ use App\Models\Book;
 use App\Models\Role;
 use App\Models\User;
 use Exception;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\View\View;
 
 class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function index()
     {
@@ -31,10 +33,11 @@ class UserController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function create()
     {
+
         return view('library.adminpanel.users.create');
     }
 
@@ -56,34 +59,23 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param User $user
-     * @return Response
-     */
-    public function show(User $user)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param User $user
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function edit(User $user)
     {
+
         return view('library.adminpanel.users.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param UpdateRequest $request
      * @param User $user
      * @return RedirectResponse
-     * @throws \Illuminate\Validation\ValidationException
      */
     public function update(UpdateRequest $request, User $user)
     {
@@ -105,7 +97,7 @@ class UserController extends Controller
      * Remove the specified resource from storage.
      *
      * @param User $user
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View|RedirectResponse
      * @throws Exception
      */
     public function destroy(User $user)
@@ -122,6 +114,12 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * @param User $user
+     * @param Book $books
+     * @return RedirectResponse
+     * @throws Exception
+     */
     public function destroyWithBooks(User $user, Book $books)
     {
 
@@ -131,6 +129,12 @@ class UserController extends Controller
         return redirect()->route('adminpanel.users.index');
     }
 
+    /**
+     * @param User $user
+     * @param Book $books
+     * @return RedirectResponse
+     * @throws Exception
+     */
     public function destroyOnlyUser(User $user, Book $books)
     {
         $books->update(['author_id' => null]);

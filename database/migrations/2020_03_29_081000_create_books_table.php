@@ -16,16 +16,16 @@ class CreateBooksTable extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('title')->unique();
+            $table->string('annotation','2000');
             $table->string('author');
             $table->string('year');
             $table->string('genre_name')->default('Без жанра');
-            $table->unsignedBigInteger('publisher_id');
+            $table->unsignedBigInteger('publisher_id')->nullable();
             $table->string('preview_path');
             $table->string('body_path');
             $table->timestamps();
         });
 
-        //Описание внешних клюючей
         Schema::table('books', function (Blueprint $table) {
             $table->foreign('genre_name')
                 ->references('name')

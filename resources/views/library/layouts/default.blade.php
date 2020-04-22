@@ -6,14 +6,17 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.6">
-    <title>Blog Template · Bootstrap</title>
+    <title>@yield('title')</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/blog/">
 
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
 
-    <script src="{{ mix('js/app.js') }}"></script>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="/docs/4.4/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -32,10 +35,6 @@
 {{--    <link rel="stylesheet" href="{{ mix('/css/library.css') }}">--}}
 </head>
 <body>
-    <div id="users-app">
-        <example-component></example-component>
-    </div>
-
      @include('library.layouts.blocks.nav.index')
 
      @yield('content')

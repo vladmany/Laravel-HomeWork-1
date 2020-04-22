@@ -18,9 +18,17 @@ class CreateRolesTable extends Migration
 
             $table->string('name')->unique();
 
-            $table->string('name');
-
             $table->timestamps();
         });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('roles');
     }
 }

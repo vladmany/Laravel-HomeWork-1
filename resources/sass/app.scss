@@ -7,8 +7,58 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-//Custom
-/* stylelint-disable selector-list-comma-newline-after */
+//Sweet Alert 2 CSS
+@import "node_modules/sweetalert2/dist/sweetalert2";
+
+//Font Awesome
+@import "//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css";
+
+.invalid-feedback {
+    display: block;
+}
+
+.img-preview {
+    max-height: 350px;
+    max-width: 300px;
+    min-height: 350px;
+    min-width: 300px;
+    background-color: #000000;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin-left: 90px;
+}
+
+.book-show-buttons a {
+    width: 100px;
+}
+
+.book-show-wrapper {
+    margin-top: 50px;
+    margin-bottom: 200px;
+}
+
+.book-info {
+    margin-bottom: 0!important;
+}
+
+.book-add-block {
+    color: #5e6467;
+    cursor: pointer;
+}
+
+.book-add-block:hover {
+    color: #212529;
+}
+
+.book-add-link {
+    font-size: 300px;
+    margin-top: -200px;
+}
+
+.book-add-link-text {
+    font-size: 25px;
+    margin-top: -125px;
+}
 
 .genres > .active {
     font-weight: bold;
@@ -132,9 +182,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .preview-field {
-    height: 350px;
+    min-height: 350px;
+    max-height: 350px;
+    min-width: 300px;
+    max-width: 300px;
     background-color: #000000;
+    background-repeat: round;
+    background-size: 100%;
+    cursor: pointer;
 }
+
 
 .h-250 { height: 250px; }
 @media (min-width: 768px) {
@@ -178,3 +235,14 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 0;
 }
 
+// Profile Template
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700);
+.profile-wrapper {
+    font-family: 'Lato', 'sans-serif';
+}
+
+.profile
+{
+    min-height: 355px;
+    display: inline-block;
+}

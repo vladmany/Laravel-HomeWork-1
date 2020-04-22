@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/{selGenre?}', 'LibraryController@index');
+Route::get('/books/{book}', 'LibraryController@show')->name('books.show');
+Route::get('/books/{book}/read', 'LibraryController@read')->name('books.read');
+Route::get('/books/{book}/download', 'LibraryController@download')->name('books.download');
 
 Route::name('adminpanel.')
     ->namespace('adminPanel')
@@ -28,8 +31,6 @@ Route::name('adminpanel.')
                 Route::resource('users', 'UserController');
             });
 
-        Route::post('users/del-with-books', 'Users\UserController@destroyWithBooks')->name('users.delWithBooks');
-        Route::post('users/del-only-user', 'Users\UserController@destroyOnlyUser')->name('users.delOnlyUser');
 
         Route::namespace('Genres')
             ->group(function () {
@@ -40,17 +41,22 @@ Route::name('adminpanel.')
             ->group(function () {
                 Route::resource('books', 'BookController');
             });
+
     });
 
 Route::name('userpanel.')
     ->namespace('UserPanel')
+    ->prefix('user')
+    ->middleware(['auth'])
     ->group(function () {
         Route::namespace('Books')
             ->group(function () {
                 Route::resource('books', 'BookController');
             });
+        Route::get('/profile', 'ProfileController@index')->name('profile');
+        Route::post('/profile/upload-image', 'ProfileController@avatarUpload')->name('profile.uploadAvatar');
     });
 
-Auth::routes();
+Route::get('/password/change', 'Auth\ChangePassword@index')->name('password.change');
+Route::post('/password/change', 'Auth\ChangePassword@change');
 
-Route::get('/home', 'HomeController@index')->name('home');

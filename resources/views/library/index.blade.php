@@ -1,5 +1,7 @@
 @extends('library.layouts.default')
 
+@section('title', 'Библиотека')
+
 @section('content')
         <main role="main">
             <div class="container">
@@ -10,7 +12,7 @@
                             <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                                 <div class="col p-4 d-flex flex-column position-static justify-content-between">
                                     <div>
-                                        <div class="preview-field">
+                                        <div class="preview-field" style="background-image: url(/storage/{{$book->preview_path}})" onclick="location.href='{{ route('books.show', compact('book')) }}'">
                                         </div>
                                         <h3 class="mb-0">{{ $book->title }}</h3> {{-- Max length 58 --}}
                                     </div>
@@ -19,7 +21,7 @@
                                         <div class="mb-1 text-muted">Автор: {{ $book->author }}</div>
                                         <div class="mb-1 text-muted">Год: {{ $book->year }}</div>
                                     </div>
-                                    <a class="btn btn-sm btn-outline-secondary" href="#">Читать</a>
+                                    <a class="btn btn-sm btn-outline-secondary" href="{{ route('books.show', compact('book')) }}">Подробнее</a>
                                 </div>
                             </div>
                         </div>

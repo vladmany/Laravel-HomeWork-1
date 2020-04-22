@@ -1,8 +1,10 @@
 @extends('library.layouts.default')
 
+@section('title', 'Управление пользователями')
+
 @section('content')
-    <div id="users-app">
-        <example-component></example-component>
+    <div id="app">
+        <adminpanel-users></adminpanel-users>
     </div>
 @endsection
 
